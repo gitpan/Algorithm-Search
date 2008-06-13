@@ -1550,7 +1550,7 @@ our $full_count= 0;
 ##   return 0;
 ##   },
 #  });
-#  is($fifteen_search->{steps}, 25209, 'number of steps');
+#  is($fifteen_search->{steps}, 25211, 'number of steps');
 
   $fifteen_search->search({search_this=>$puzzle,
    max_steps => 20000,
@@ -1573,13 +1573,13 @@ our $full_count= 0;
   $fifteen_search->continue_search({additional_steps => 2});
   is($fifteen_search->{steps}, 22312, 'number of steps 5');
 
-  $fifteen_search->continue_search({additional_steps =>2896});
-  is($fifteen_search->{steps}, 25208, 'number of steps 6');
+  $fifteen_search->continue_search({additional_steps =>2898});
+  is($fifteen_search->{steps}, 25210, 'number of steps 6');
 
   is($fifteen_search->{search_completed},0,'search still not completed ');
 
   $fifteen_search->continue_search({additional_steps =>2});
-  is($fifteen_search->{steps}, 25209, 'number of steps 7');
+  is($fifteen_search->{steps}, 25211, 'number of steps 7');
 
   is($fifteen_search->{search_completed},1,'search completed ');
 

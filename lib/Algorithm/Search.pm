@@ -1,6 +1,6 @@
 package Algorithm::Search;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 use 5.006;
 use strict;
@@ -95,7 +95,11 @@ sub steps {
 sub first_search_step {
   my $self = shift;
   my $initial_cost = $self->{initial_cost};
-  my $initial_position = $self->{last_object} = $self->{search_this};
+#why doesn't below line work?
+  #my $initial_position = $self->{last_object} = $self->{search_this}->copy;
+  my $x_position = $self->{last_object} = $self->{search_this}->copy;
+  my $initial_position = $x_position;
+  #my $initial_position = $self->{last_object} = $self->{search_this};
 
   if ($self->{mark_solution}) {
     if ($initial_position->is_solution) {
@@ -129,6 +133,7 @@ sub first_search_step {
      commit => $initial_commit,
      value_after => $value,
      value_before => undef,
+     move => undef,
     };
   }
 
@@ -181,7 +186,6 @@ sub search_step {
   my $value;
   if ($self->{value_function}) {
      $value = $new_position->value;
-#print STDERR "path value is $value\n";
     if ($path_values->{$value}) {
       return;
     }
@@ -201,6 +205,7 @@ sub search_step {
      commit => $commit,
      value_before => $previous_value,
      value_after => $value,
+     move => $move,
     };
   }
 
@@ -309,6 +314,7 @@ sub rdfs_first_search_step {
         $self->{handled}->{$value} = 1;
       }
     }
+    push @{$self->{info}}, [$value, $self->{cost}, $self->{commit}];
   }
   if ($self->{return_search_trace}) {
     push @{$self->{trace}}, {
@@ -316,6 +322,7 @@ sub rdfs_first_search_step {
      commit => $self->{commit},
      value_before => undef,
      value_after => $value,
+     move => undef,
     };
   }
 
@@ -365,11 +372,14 @@ sub forward_rdfs_search_step {
   }
 
   if ($self->{return_search_trace}) {
+#use Data::Dumper;
+#print STDERR "si ".Dumper($self->{info})."\n";
     push @{$self->{trace}}, {
      cost => $new_cost,
      commit => $new_commit,
      value_after => $value,
      value_before => $self->{info}->[-1]->[0],
+     move => $next_move,
     };
   }
 

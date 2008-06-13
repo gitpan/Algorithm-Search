@@ -39,7 +39,7 @@ use Test::More tests => 35;
      return $distance_to_urbana{$self->{position}};}
   sub value {my $self = shift; return $self->{position}}
   sub copy {my $self = shift; my $copy = $self->new;
-   $copy->move([$self->{position}]); return $copy;};
+   $copy->move($self->{position}); return $copy;};
   sub is_solution {my $self = shift;
      return $self->{position} eq 'Urbana';}
 
@@ -635,65 +635,77 @@ St. Paul..Madison..Rockford..Bloomington..Champaign..Chicago..Urbana
 Duluth..Chicago..Urbana
 ", 'ts2 cost max depth');
 
+#use Data::Dumper;
+#print STDERR "q: ".Dumper($travel_search->search_trace)."\n";
  is_deeply($travel_search->search_trace,
- [                                                    
+   [
           {
             'commit' => undef,
             'cost' => 515,
+            'move' => undef,
             'value_before' => undef,
             'value_after' => 'Minneapolis'
           },
           {
             'commit' => undef,
             'cost' => 515,
+            'move' => 'Duluth',
             'value_before' => 'Minneapolis',
             'value_after' => 'Duluth'
           },
           {
             'commit' => undef,
             'cost' => 515,
+            'move' => 'St. Paul',
             'value_before' => 'Minneapolis',
             'value_after' => 'St. Paul'
           },
           {
             'commit' => undef,
             'cost' => 505,
+            'move' => 'Madison',
             'value_before' => 'St. Paul',
             'value_after' => 'Madison'
           },
           {
             'commit' => undef,
             'cost' => 252,
+            'move' => 'Rockford',
             'value_before' => 'Madison',
             'value_after' => 'Rockford'
           },
           {
             'commit' => undef,
             'cost' => 185,
+            'move' => 'Bloomington',
             'value_before' => 'Rockford',
             'value_after' => 'Bloomington'
           },
           {
             'commit' => undef,
             'cost' => 252,
+            'move' => 'Chicago',
             'value_before' => 'Madison',
             'value_after' => 'Chicago'
           },
           {
             'commit' => undef,
             'cost' => 140,
+            'move' => 'Urbana',
             'value_before' => 'Chicago',
             'value_after' => 'Urbana'
           },
           {
             'commit' => undef,
             'cost' => 575,
+            'move' => 'Chicago',
             'value_before' => 'Duluth',
             'value_after' => 'Chicago'
           },
           {
             'commit' => undef,
             'cost' => 140,
+            'move' => 'Urbana',
             'value_before' => 'Chicago',
             'value_after' => 'Urbana'
           }

@@ -662,7 +662,7 @@ my $loaded = 1;
 #   search_type => 'bfs',
 #   do_not_repeat_values => 1,
 #  });
-#  is($fifteen_search->{steps}, 25209, 'number of steps');
+#  is($fifteen_search->{steps}, 25211, 'number of steps');
 #
 #  $fifteen_search->search({search_this=>$puzzle,
 #   max_steps => 40000,
@@ -670,7 +670,7 @@ my $loaded = 1;
 #   search_type => 'bfs',
 #   do_not_repeat_values => 1,
 #  });
-#  is($fifteen_search->{steps}, 25209, 'number of steps a second time');
+#  is($fifteen_search->{steps}, 25211, 'number of steps a second time');
 
   $fifteen_search->search({search_this=>$puzzle,
    max_steps => 20000,
@@ -685,13 +685,13 @@ my $loaded = 1;
 
   is($fifteen_search->{search_completed},0,'search not completed yet');
 
-  $fifteen_search->continue_search({additional_steps => 3208});
-  is($fifteen_search->{steps}, 25208, 'number of steps 4');
+  $fifteen_search->continue_search({additional_steps => 3210});
+  is($fifteen_search->{steps}, 25210, 'number of steps 4');
 
   is($fifteen_search->{search_completed},0,'search not completed ');
 
   $fifteen_search->continue_search({additional_steps => 2});
-  is($fifteen_search->{steps}, 25209, 'number of steps 5');
+  is($fifteen_search->{steps}, 25211, 'number of steps 5');
 
   is($fifteen_search->{search_completed},1,'search completed ');
 

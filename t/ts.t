@@ -97,53 +97,63 @@ St. Paul..Madison..Rockford..Bloomington..Champaign..Chicago..Urbana
 "St. Paul..Madison..Chicago..Urbana
 ", 'max depth dfs');
 
+#use Data::Dumper;
+#print STDERR "x: ".Dumper($travel_search->search_trace)."\n";
   is_deeply($travel_search->search_trace,
-[                                    
+   [
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => undef,
             'value_before' => undef,
             'value_after' => 'Minneapolis'
           },
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => 'Duluth',
             'value_before' => 'Minneapolis',
             'value_after' => 'Duluth'
           },
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => 'St. Paul',
             'value_before' => 'Minneapolis',
             'value_after' => 'St. Paul'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Madison',
             'value_before' => 'St. Paul',
             'value_after' => 'Madison'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Rockford',
             'value_before' => 'Madison',
             'value_after' => 'Rockford'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Bloomington',
             'value_before' => 'Rockford',
             'value_after' => 'Bloomington'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Chicago',
             'value_before' => 'Madison',
             'value_after' => 'Chicago'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Urbana',
             'value_before' => 'Chicago',
             'value_after' => 'Urbana'
           }
@@ -264,53 +274,63 @@ St. Paul..Madison..Rockford..Bloomington..Champaign..Urbana
 "St. Paul..Madison..Chicago..Urbana
 ", 'bfs max depth');
 
+#use Data::Dumper;
+#print STDERR "y: ".Dumper($travel_search->search_trace)."\n";
  is_deeply($travel_search->search_trace,
-[
+  [
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => undef,
             'value_before' => undef,
             'value_after' => 'Minneapolis'
           },
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => 'Duluth',
             'value_before' => 'Minneapolis',
             'value_after' => 'Duluth'
           },
           {
             'commit' => undef,
             'cost' => undef,
+            'move' => 'St. Paul',
             'value_before' => 'Minneapolis',
             'value_after' => 'St. Paul'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Madison',
             'value_before' => 'St. Paul',
             'value_after' => 'Madison'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Rockford',
             'value_before' => 'Madison',
             'value_after' => 'Rockford'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Chicago',
             'value_before' => 'Madison',
             'value_after' => 'Chicago'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Bloomington',
             'value_before' => 'Rockford',
             'value_after' => 'Bloomington'
           },
           {
             'commit' => undef,
             'cost' => 0,
+            'move' => 'Urbana',
             'value_before' => 'Chicago',
             'value_after' => 'Urbana'
           }
