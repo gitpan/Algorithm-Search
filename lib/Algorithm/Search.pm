@@ -1,6 +1,6 @@
 package Algorithm::Search;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 use 5.006;
 use strict;
@@ -804,7 +804,7 @@ St. Paul..Madison..Chicago..Urbana
      return $distance_to_urbana{$self->{position}};}
   sub value {my $self = shift; return $self->{position}}
   sub copy {my $self = shift; my $copy = $self->new;
-   $copy->move([$self->{position}]); return $copy;};
+   $copy->move($self->{position}); return $copy;};
   sub is_solution {my $self = shift;
      return $self->{position} eq 'Urbana';}
 
@@ -818,7 +818,7 @@ St. Paul..Madison..Chicago..Urbana
    solutions_to_find => 0,
    search_type => 'cost',
    initial_cost => $driver->distance_to_urbana,
-   maximum_depth => 7, #if 6 then only 3 paths will be returned
+   maximum_depth => 8, #if 7 then only 3 paths will be returned
   });
 
   $full_path = '';

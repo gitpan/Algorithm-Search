@@ -21,3 +21,4 @@ t/tr2.t
 t/p28.t
 lib/Algorithm/Search.pm
 META.yml                                 Module meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)

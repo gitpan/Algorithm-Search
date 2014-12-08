@@ -1,4 +1,4 @@
-Algorithm-Search version 0.03
+Algorithm-Search version 0.04
 =============================
 
 INSTALLATION
@@ -24,6 +24,6 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2008 by Arthur Goldstein, arthur@acm.org
+Copyright (C) 2008,2014 by Arthur Goldstein, arthur@acm.org
 
 Please email comments.

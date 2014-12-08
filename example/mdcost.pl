@@ -34,7 +34,7 @@
      return $distance_to_urbana{$self->{position}};}
   sub value {my $self = shift; return $self->{position}}
   sub copy {my $self = shift; my $copy = $self->new;
-   $copy->move([$self->{position}]); return $copy;};
+   $copy->move($self->{position}); return $copy;};
   sub is_solution {my $self = shift;
      return $self->{position} eq 'Urbana';}
 
@@ -48,7 +48,7 @@
    solutions_to_find => 0,
    search_type => 'cost',
    initial_cost => $driver->distance_to_urbana,
-   maximum_depth => 7,
+   maximum_depth => 8,
   });
 
   $full_path = '';
